@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 	  # POST /tasks
 	  def create
 	    task = Task.create(task_params)
-	    render status: :created
+	    render json: task.id, status: :created
 	  end
 
 	  # PATCH/PUT /tasks/1
@@ -31,8 +31,8 @@ class TasksController < ApplicationController
 
 	  # DELETE /tasks/1
 	  def destroy
-	    @task = Task.find params[:id]
-	    @task.destroy
+	   task = Task.find params[:id]
+	   task.destroy
 	  end
 
 	  private
