@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
 	 before_action :set_task, only: [:show, :update, :destroy]
 
+
+  expose :task, -> { Task.find(params[:id]) }
 	  # GET /tasks
 	  def index
 	    tasks = Task.all
@@ -9,7 +11,7 @@ class TasksController < ApplicationController
 
 	  # GET /tasks/1
 	  def show
-	    render json: @task
+	    render json: task
 	  end
 
 	  # POST /tasks
@@ -22,7 +24,7 @@ class TasksController < ApplicationController
 	  def update
 	  # @task = Task.find params[:id]
 	  # @task.update_attributes task_params
-	    if @task.update(task_params)
+	    if task.update(task_params)
 	      render json: @task
 	    else
 	      render json: @task.errors, status: :unprocessable_entity
@@ -31,7 +33,7 @@ class TasksController < ApplicationController
 
 	  # DELETE /tasks/1
 	  def destroy
-	   task = Task.find params[:id]
+	   #task = Task.find params[:id]
 	   task.destroy
 	  end
 
