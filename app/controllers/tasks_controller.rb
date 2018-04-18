@@ -24,7 +24,6 @@ class TasksController < ApplicationController
 	  def update
 	  # task = Task.find params[:id]
 	  # task.update_attributes task_params
-
 	    if task.update(task_params)
 	      render json: task
 	    else
@@ -47,6 +46,6 @@ class TasksController < ApplicationController
 
 	    # Only allow a trusted parameter "white list" through.
 	    def task_params
-	      params.require(:task).permit(:title, :description, :priority, :due_date)
+	      params.require(:task).permit(:title, :description, :priority, :due_date, :active)
 	    end
 	end
