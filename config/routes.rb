@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :tasks
-  resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :tasks do
+    collection do
+     post :batch_destroy
+    end
+  end
 end

@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
 
   expose :task, -> { Task.find(params[:id]) }
+  expose :tasks, -> { Tasks.all }
 	  # GET /tasks
 	  def index
 	    tasks = Task.all
@@ -18,6 +19,7 @@ class TasksController < ApplicationController
 	  def create
 	    task = Task.create(task_params)
 	    render json: task.id, status: :created
+
 	  end
 
 	  # PATCH/PUT /tasks/1
@@ -35,8 +37,22 @@ class TasksController < ApplicationController
 	  # DELETE /tasks/1
 	  def destroy
 	   #task = Task.find params[:id]
-	   task.destroy
+	   # task.destroy
+	    if task.destroy
+        return head(:ok)
+      else
+        return head(:bad_request)
+      end
 	  end
+
+	   def batch_destroy
+      # if tasks.where(id: params[:ids]).destroy_all
+      #   return head(:ok)
+      # else
+      #   return head(:bad_request)
+      #  end
+        tasks = Task.where(id: params[:ids]).destroy_all
+      end
 
 	  private
 	    # Use callbacks to share common setup or constraints between actions.
