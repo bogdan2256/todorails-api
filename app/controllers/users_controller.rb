@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+skip_before_action :authenticate_user!, only: :create
 
-
- # expose :user, -> { User.find_by_token(params[:user]) }
+ expose :user, -> { User.find_by_token(params[:user]) }
   # def index
   #   user = User.all
   #   render json: user
