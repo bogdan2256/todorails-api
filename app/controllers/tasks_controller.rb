@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
-	 before_action :set_task, only: [:show, :update, :destroy]
+	before_action :set_task, only: [:show, :update, :destroy]
 
 
-  expose :task, -> { Task.find(params[:id]) }
-  expose :tasks, -> { Tasks.all }
+  expose :task, -> { current_user.tasks.find(params[:id]) }
+  expose :tasks, -> { current_user.tasks.all }
 	  # GET /tasks
 	  def index
-	    tasks = Task.all
+	    tasks = current_user.tasks.all
 	    render json: tasks
 	  end
 
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
 	  # POST /tasks
 	  def create
-	    task = Task.create(task_params)
+	    task = current_user.tasks.create(task_params)
 	    render json: task.id, status: :created
 
 	  end
@@ -51,13 +51,13 @@ class TasksController < ApplicationController
       # else
       #   return head(:bad_request)
       #  end
-        tasks = Task.where(id: params[:ids]).destroy_all
+        tasks = current_user.tasks.where(id: params[:ids]).destroy_all
       end
 
 	  private
 	    # Use callbacks to share common setup or constraints between actions.
 	    def set_task
-	      task = Task.find(params[:id])
+	      task = current_user.tasks.find(params[:id])
 	    end
 
 	    # Only allow a trusted parameter "white list" through.

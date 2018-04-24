@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-# 	validates :title, presence: true, length: { minimum: 4, too_short: "Five characters is the minimum allowed" }
-# 	validates :priority, presence: true, numericality: { only_integer: true }
-# 	validates :due_date, presence: true
+    belongs_to :user
+
+
  end
