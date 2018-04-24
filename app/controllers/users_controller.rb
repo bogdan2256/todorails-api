@@ -1,16 +1,19 @@
 class UsersController < ApplicationController
 
-  def index
-    user = User.all
-    render json: user
-  end
+
+ # expose :user, -> { User.find_by_token(params[:user]) }
+  # def index
+  #   user = User.all
+  #   render json: user
+  # end
 
   def create
-    user = User.new(user_params)
     # p user
     # p user.valid?
     # p user.errors
-     user.save
+
+    user = User.new(user_params)
+    user.save
   end
 
   private
