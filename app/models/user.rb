@@ -8,6 +8,6 @@ class User < ApplicationRecord
   after_create :send_email , unless: :email_confirmed
 
   def send_email
-    UserMailer.registration_confirmation(self).deliver_later
+    UserMailer.registration_confirmation(self).deliver_now
   end
 end
