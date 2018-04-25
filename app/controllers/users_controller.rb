@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     user.save
   end
 
+  # def email_confirmation
+
+  # end
+
+
   private
 
   def user_params

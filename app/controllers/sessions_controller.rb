@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(session_params[:email].downcase)
 
     return render json: { message: 'Invalid email or password.' }, status: :unprocessable_entity unless user&.authenticate(session_params[:password])
-    # return render json: { message: 'Confirm your email.' }, status: :unprocessable_entity unless user.email_confirmed
+    return render json: { message: 'Confirm your email.' }, status: :unprocessable_entity unless user.email_confirmed
     render_api(user, :ok)
   end
 
