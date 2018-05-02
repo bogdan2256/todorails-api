@@ -92,5 +92,6 @@ config.action_mailer.smtp_settings = {
   user_name:            ENV['MAIL_ACCOUNT_NAME'],
   password:             ENV['MAIL_PASSWORD'],
   authentication:       'plain',
-  enable_starttls_auto: true }
+  # enable_starttls_auto: true
+}
 end
