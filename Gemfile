@@ -21,6 +21,11 @@ end
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'puma', '~> 3.7'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'factory_girl_rails'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
@@ -28,6 +33,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener"
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

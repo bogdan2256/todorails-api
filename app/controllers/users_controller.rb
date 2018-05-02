@@ -9,9 +9,12 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    user.save
 
-
+    if user&.valid? && user.save
+      render json:  { message: 'user created, now confirm your email' }
+    else
+      render json: { errors: user.errors.full_messages.to_sentence }
+    end
   end
 
   private
