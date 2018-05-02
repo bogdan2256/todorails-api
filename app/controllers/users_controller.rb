@@ -8,18 +8,10 @@ class UsersController < ApplicationController
   # end
 
   def create
-    # p user
-    # p user.valid?
-    # p user.errors
-
     user = User.new(user_params)
     user.save
+
   end
-
-  # def email_confirmation
-
-  # end
-
 
   private
 
