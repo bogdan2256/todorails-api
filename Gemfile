@@ -7,7 +7,7 @@ end
 
 gem 'rails', '~> 5.1.6'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.7'
+
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'decent_exposure'
@@ -19,6 +19,7 @@ end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'puma', '~> 3.7'
 end
 
 group :development do
