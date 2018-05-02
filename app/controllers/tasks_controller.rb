@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   expose :tasks, -> { current_user.tasks.all }
 	  # GET /tasks
 	  def index
-	    tasks = current_user.tasks.all
+	    tasks = Task.all
 	    render json: tasks
 	  end
 
