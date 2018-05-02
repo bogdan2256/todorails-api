@@ -13,9 +13,9 @@ gem 'rack-cors'
 gem 'decent_exposure'
 gem 'active_model_serializers'
 
-# group :production do
-#  gem 'rails_12factor'
-# end
+group :production do
+ gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
