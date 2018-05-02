@@ -1,6 +1,9 @@
 
 <p>Welcome <%= @email %>!</p>
+<p>Te <%= @test %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
+
+
 
 <p><%= link_to "confirm email", email_confirmation_show_url(@user.token)%> </p>
