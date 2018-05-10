@@ -8,7 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :username, :firstname, :lastname, presence: true
 
-
   def full_name
     "#{firstname} #{lastname}"
   end

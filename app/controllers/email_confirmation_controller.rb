@@ -1,6 +1,4 @@
 class EmailConfirmationController < ApplicationController
-  # skip_before_action :authenticate_user!, only: :show
-
   expose :token, -> { params[:format] }
   expose :user, -> { User.find_by(token: token) }
 
