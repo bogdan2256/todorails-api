@@ -7,7 +7,6 @@ end
 
 gem 'rails', '~> 5.1.6'
 gem 'pg', '>= 0.18', '< 2.0'
-
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'decent_exposure'
@@ -39,6 +38,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'faker'
+  gem 'simplecov', :require => false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
