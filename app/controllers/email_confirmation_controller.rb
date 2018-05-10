@@ -4,6 +4,6 @@ class EmailConfirmationController < ApplicationController
 
   def show
     binding.pry
-    redirect_to "#{Figaro.env.frontend_url}/users/sign_in" if user&.update_column(:email_confirmed, true)
+    redirect_to "#{Figaro.env.frontend_url}/users/sign_in" if user&user.update_column(:email_confirmed, true)
   end
 end
