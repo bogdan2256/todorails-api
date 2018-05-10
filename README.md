@@ -1,1 +1,1 @@
-https://circleci.com/gh/:owner/:repo.png?circle-token=:circle-token
+  https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser/master.svg
