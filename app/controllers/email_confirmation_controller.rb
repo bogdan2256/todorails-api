@@ -1,6 +1,6 @@
 class EmailConfirmationController < ApplicationController
-  expose :token, -> { params[:format] }
-  expose :user, -> { User.find_by(token: token) }
+  expose :token, -> {params[:format]}
+  expose :user, -> {User.find_by(token: token)}
 
   def show
     binding.pry
