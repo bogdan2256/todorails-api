@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  expose :user, -> {User.find_by_token(params[:user])}
+  # expose :user, -> {User.find_by_token(params[:user])}
+  expose :token, -> {User.find_by_token(params[:user])}
+
 
   def create
     user = User.new(user_params)
-
-    if user && user.valid? && user.save
+    # if user && user.valid? && user.save
+    if user && user.save
       render json:  {message: 'user created, now confirm your email'}
     else
       render json: {errors: user.errors.full_messages.to_sentence}
