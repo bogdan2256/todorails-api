@@ -6,21 +6,21 @@ class TasksController < ApplicationController
 
   def index
     tasks = current_user.tasks.all
-    render json: tasks
+    render json: tasks, status: 200
   end
 
   def show
-    render json: task
+    render json: task, status: 200
   end
 
   def create
     task = current_user.tasks.create(task_params)
-    render json: task.id, status: :created
+    render json: task.id, status: 201
   end
 
   def update
     if task.update(task_params)
-      render json: task
+      render json: task, status: 200
     else
       render json: task.errors, status: :unprocessable_entity
     end
