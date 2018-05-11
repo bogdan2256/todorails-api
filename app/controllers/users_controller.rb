@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- expose :user, -> {User.find_by_token(params[:user])}
+  expose :user, -> {User.find_by_token(params[:user])}
 
   def create
     user = User.new(user_params)
