@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   expose :tasks, -> {current_user.tasks.all}
 
   def index
-    tasks = current_user.tasks.all
+    tasks = current_user.tasks.all.order('priority ASC')
     render json: tasks, status: 200
   end
 
