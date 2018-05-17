@@ -6,23 +6,23 @@ class TasksController < ApplicationController
 
   def index
     tasks = current_user.tasks.all.order('priority ASC')
-    render json: tasks, status: 200
+    render json: tasks, status: 200,  each_serializer: TasksSerializer
   end
 
   def show
-    render json: task, status: 200
+    render json: task, status: 200, each_serializer: TaskSerializer
   end
 
   def create
     task = current_user.tasks.create(task_params)
-    render json: task.id, status: 201
+    render json: task.id, status: 201, each_serializer: TaskSerializer
   end
 
   def update
     if task.update(task_params)
       render json: task, status: 200
     else
-      render json: task.errors, status: :unprocessable_entity
+      render json: task.errors, status: :unprocessable_entity, each_serializer: TaskSerializer
     end
   end
 

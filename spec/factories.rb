@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :task do
     title Faker::Name.name
-    desctiption Faker::Name.name
+    description Faker::Name.name
     due_date Faker::Time.between(2.days.ago, Time.now)
     priority Faker::Number.number(2)
     active "false"

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     userq = {email: user.email, token: user.token, full_name: user.full_name, username: user.username}
     return render json: { message: 'Invalid email or password.' }, status: :unprocessable_entity unless user&.authenticate(session_params[:password])
     return render json: { message: 'Confirm your email.' }, status: :unprocessable_entity unless user.email_confirmed
-    render_api(userq, :ok)
+    render json: userq, status: 200, each_serializer: SessionSerializer
   end
 
   private
