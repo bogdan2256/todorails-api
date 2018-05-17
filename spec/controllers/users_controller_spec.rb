@@ -2,20 +2,21 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
+let!(:user) { create(:user) }
+
   it 'create_bad_user' do
     post :create,
     params: {
       user: {
-        firstname: Faker::Name.name,
-        lastname: Faker::Name.name,
-        email: Faker::Internet.email,
-        username: "",
-        password: Faker::Internet.password
+        firstname: 'firstname',
+        lastname: 'lastname',
+        email: 'email@gmail.ua',
+        username: 'username',
+        password: ''
       }
     }
-
     expect(JSON.parse(response.body)).to eql({
-      "errors" => "Username can't be blank"
+      "errors" => "Password can't be blank"
     })
   end
 
@@ -23,16 +24,16 @@ RSpec.describe UsersController, type: :controller do
     post :create,
     params: {
       user: {
-        firstname: Faker::Name.name,
-        lastname: Faker::Name.name,
-        email: Faker::Internet.email,
-        username: Faker::Internet.user_name,
-        password: Faker::Internet.password
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        username: user.username,
+        password: user.password
       }
     }
 
     expect(JSON.parse(response.body)).to eql({
-      "message" => "user created, now confirm your email"
+      "errors" => "Email has already been taken"
     })
   end
 end
