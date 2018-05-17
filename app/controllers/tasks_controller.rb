@@ -41,11 +41,10 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    # task
     task = current_user.tasks.find(params[:id])
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :priority, :due_date, :active, :user_id)
+    params.require(:task).permit(:title, :description, :priority, :due_date, :active)
   end
 end
