@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   expose :task, -> {current_user.tasks.find(params[:id])}
-  expose :tasks, -> {current_user.tasks.all}
+  expose :active_tasks, -> {current_user.tasks.where(active: false).order('priority ASC')}
+  expose :completed_tasks, -> {current_user.tasks.where(active: true).order('priority ASC')}
 
   def index
-    tasks = current_user.tasks.all.order('priority ASC')
-    render json: tasks, status: 200,  each_serializer: TasksSerializer
+    render json: {active: active_tasks, completed: completed_tasks}, status: 200,  each_serializer: TasksSerializer
   end
 
   def show
