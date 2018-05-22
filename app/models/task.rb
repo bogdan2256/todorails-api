@@ -12,13 +12,4 @@ class Task < ApplicationRecord
       maximum: 10
     }
   validates :priority, presence: true
-
-  # scope :by_status, lambda { |status|
-  #   binding.pry
-  #  if status
-  #    where(active: status)
-  #  else
-  #     nil
-  #  end
-  # }
 end
