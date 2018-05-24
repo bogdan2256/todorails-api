@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user && user.save
-      render json:  {message: 'user created, now confirm your email'}
+      render json:  {message: 'user created, now confirm your email'}, status: 200
     else
-      render json: {errors: user.errors.full_messages.to_sentence}
+      render json: {errors: user.errors.full_messages.to_sentence}, status: 404
     end
   end
 

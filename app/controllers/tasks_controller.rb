@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     if task.update(task_params)
       render json: task, status: 200
     else
-      render json: task.errors, status: :unprocessable_entity, each_serializer: TaskSerializer
+      render json: task.errors, status: 422, each_serializer: TaskSerializer
     end
   end
 
