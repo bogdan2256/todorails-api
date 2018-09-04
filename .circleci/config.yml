@@ -13,7 +13,7 @@ jobs:
       - image: circleci/postgres:9.5.14
 
         environment:
-            POSTGRES_USER: todo-api
+            POSTGRES_USER: milestep
             POSTGRES_DB: rails_api-react_client_development
 
       # Specify service dependencies here if necessary
