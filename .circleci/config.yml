@@ -9,12 +9,12 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
-      - image: circleci/postgres:9.6
+      - image: circleci/ruby:2.5
+      - image: circleci/postgres:9.5.14
 
         environment:
             POSTGRES_USER: todo-api
-            POSTGRES_DB: myapp_development
+            POSTGRES_DB: rails_api-react_client_development
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -56,10 +56,7 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-      # - deploy:
-      #       command: |
-      #         git push -f https://heroku:85e1a01f-c4ec-4a71-9c21-7534bf2f1e53@git.heroku.com/naprok-task.git master
-      # collect reports
+
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
