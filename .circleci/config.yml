@@ -5,7 +5,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5
-      - image: circleci/postgres:9.5.14
+      - image: circleci/postgres:9.5
 
         environment:
             POSTGRES_USER: rails_api-react_client
@@ -37,11 +37,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      # - run: bundle exec rake db:create
-      # - run: bundle exec rake db:schema:load
-      - run: bundle exec rake db:drop
-      - run: bundle exec rake db:create RAILS_ENV=test
-      - run: bundle exec rake db:migrate RAILS_ENV=test
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       # run tests!
       - run:
@@ -55,6 +52,7 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
+      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
