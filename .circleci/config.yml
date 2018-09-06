@@ -2,11 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-     - image: ruby:2.5
+     - image: circleci/ruby:2.5.0-node-browsers
        enviroment:
          PGHOST: 127.0.0.1
          PGUSER: rails_api-react_client
-     - image: postgres:9.5
+         RAILS_ENV: test
+     - image: circleci/postgres:9.6-alpine
        environment:
         POSTGRES_USER: rails_api-react_client
         POSTGRES_DB: rails_api-react_client_production
