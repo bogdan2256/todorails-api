@@ -19,17 +19,17 @@ jobs:
         name: Restore bundle cache
         key: myapp-bundle-{{ checksum "Gemfile.lock" }}
 
-      - type: cache-restore
-        name: Restore yarn cache
-        key: myapp-yarn-{{ checksum "yarn.lock" }}
+      # - type: cache-restore
+      #   name: Restore yarn cache
+      #   key: myapp-yarn-{{ checksum "yarn.lock" }}
 
       - run:
           name: Bundle Install
           command: bin/bundle install --path vendor/bundle
 
-      - run:
-          name: Yarn Install
-          command: yarn install
+      # - run:
+      #     name: Yarn Install
+      #     command: yarn install
 
       - type: cache-save
         name: Store bundle cache
@@ -37,11 +37,11 @@ jobs:
         paths:
           - vendor/bundle
 
-      - type: cache-save
-        name: Store yarn cache
-        key: myapp-yarn-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.yarn-cache
+      # - type: cache-save
+      #   name: Store yarn cache
+      #   key: myapp-yarn-{{ checksum "yarn.lock" }}
+      #   paths:
+      #     - ~/.yarn-cache
 
       - run:
           name: Wait for DB
@@ -49,7 +49,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: bin/rails db:schema:load
 
       - run:
           name: Run tests
