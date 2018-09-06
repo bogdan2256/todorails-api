@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: apt-get update -qq && apt-get install -y build-essential nodejs
-      - run: bundle install
+      - run: sudo bundle install
       - run: bundle exec rake db:create db:schema:load --trace
       - run: bundle exec rake db:migrate
       - run: bundle exec rspec spec
