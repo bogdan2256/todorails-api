@@ -3,10 +3,15 @@ jobs:
   build:
     docker:
      - image: ruby:2.5
-       enviroment:
-     - image: postgres:9.5
        environment:
-        POSTGRES_DB: rails_api-react_client_production
+        PGHOST: 127.0.0.1
+        PGUSER: rails_api-react_client
+        RAILS_ENV: test
+     - image: postgres:9.5
+        environment:
+          POSTGRES_USER: rails_api-react_client
+          POSTGRES_DB: rails_api-react_client_production
+          POSTGRES_PASSWORD: ""
 
     working_directory: /home/Project/rails_api
     steps:
