@@ -7,7 +7,7 @@ jobs:
         environment:
           POSTGRES_USER: rails_api-react_client
 
-    working_directory: /Стільниця/Project/rails_api
+    working_directory: /home/Project/rails_api
     steps:
       - checkout
       - run: apt-get update -qq && apt-get install -y build-essential nodejs
