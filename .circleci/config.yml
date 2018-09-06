@@ -8,10 +8,9 @@ jobs:
         PGUSER: rails_api-react_client
         RAILS_ENV: test
      - image: postgres:9.5
-        environment:
-          POSTGRES_USER: rails_api-react_client
-          POSTGRES_DB: rails_api-react_client_production
-          POSTGRES_PASSWORD: ""
+       environment:
+        POSTGRES_USER: rails_api-react_client
+        POSTGRES_DB: rails_api-react_client_production
 
     working_directory: /home/Project/rails_api
     steps:
