@@ -5,8 +5,6 @@ jobs:
      - image: ruby:2.5
        environment:
           PGHOST: 127.0.0.1
-          PGUSER: rails_api-react_client
-           RAILS_ENV: test
       - image: postgres:9.5
         environment:
           POSTGRES_USER: rails_api-react_client
